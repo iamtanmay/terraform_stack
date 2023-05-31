@@ -1,4 +1,3 @@
-#!/bin/bash
 export RAW_STR=$(awslocal ecr create-repository --repository-name test-ecr | grep "repositoryUri")
 echo "$RAW_STR"
 RAW_STR=(${RAW_STR//:/})
