@@ -1,3 +1,4 @@
+#!/bin/sh
 ENDPOINT_URL=http://localhost:4566
 RAW_STR=$(aws --endpoint-url $ENDPOINT_URL ecr create-repository --repository-name test-ecr | grep "repositoryUri")
 RAW_STR=(${RAW_STR//:/})
