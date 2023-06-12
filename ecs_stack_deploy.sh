@@ -7,7 +7,7 @@ aws cloudformation create-stack --stack-name $STACK_NAME"-Redis" --template-body
 aws cloudformation wait stack-create-complete --stack-name $STACK_NAME"-Redis"
 
 #Postgres
-aws cloudformation create-stack --stack-name $STACK_NAME"-Postgres" --template-body file://templates/postgres.yml ParameterKey=StackName,ParameterValue=$STACK_NAME --capabilities CAPABILITY_IAM
+aws cloudformation create-stack --stack-name $STACK_NAME"-Postgres" --template-body file://templates/postgres.yml --capabilities CAPABILITY_IAM
 aws cloudformation wait stack-create-complete --stack-name $STACK_NAME"-Postgres"
 
 #Kutt
