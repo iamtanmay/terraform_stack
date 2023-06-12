@@ -3,11 +3,11 @@ aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://
 aws cloudformation wait stack-create-complete --stack-name $STACK_NAME
 
 #Redis
-aws cloudformation create-stack --stack-name $STACK_NAME"-Redis" --template-body file://templates/elasticache_redis.yml --capabilities CAPABILITY_IAM
+aws cloudformation create-stack --stack-name $STACK_NAME"-Redis" --template-body file://templates/elasticache_redis.yml  --parameters  ParameterKey=StackName,ParameterValue=$STACK_NAME --capabilities CAPABILITY_IAM
 aws cloudformation wait stack-create-complete --stack-name $STACK_NAME"-Redis"
 
 #Postgres
-aws cloudformation create-stack --stack-name $STACK_NAME"-Postgres" --template-body file://templates/postgres.yml --capabilities CAPABILITY_IAM
+aws cloudformation create-stack --stack-name $STACK_NAME"-Postgres" --template-body file://templates/postgres.yml ParameterKey=StackName,ParameterValue=$STACK_NAME --capabilities CAPABILITY_IAM
 aws cloudformation wait stack-create-complete --stack-name $STACK_NAME"-Postgres"
 
 #Kutt
