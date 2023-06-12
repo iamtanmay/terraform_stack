@@ -10,7 +10,7 @@ Parameters:
   CacheNodeType:
     Description: The instance type the nodes will launch under.
     Type: String
-    Default: cache.m3.medium
+    Default: cache.t4g.medium
   MultiAZSupport:
     Description: >-
       Indicates whether Multi-AZ is enabled. When Multi-AZ is enabled, a
