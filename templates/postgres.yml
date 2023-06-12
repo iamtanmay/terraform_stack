@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  AWS CloudFormation Sample Template: Sample template showing how to
+  create an Amazon RDS Database Instance with provisioned IOPs.**WARNING** This
+  template creates an Amazon Relational Database Service database instance. You
+  will be billed for the AWS resources used if you create a stack from this
+  template.
+Parameters:
+  DBUser:
+    Default: root
+    NoEcho: 'true'
+    Description: The database admin account username
+    Type: String
+    MinLength: '1'
+    MaxLength: '16'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric characters.
+  DBPassword:
+    Default: AmazingPassword
+    NoEcho: 'true'
+    Description: The database admin account password
+    Type: String
+    MinLength: '8'
+    MaxLength: '41'
+    AllowedPattern: '[a-zA-Z0-9]*'
+    ConstraintDescription: must contain only alphanumeric characters.
+Resources:
+  myDB:
+    Type: 'AWS::RDS::DBInstance'
+    Properties:
+      AllocatedStorage: '20'
+      DBInstanceClass: db.t3.micro
+      Engine: postgres
+      EngineVersion: '13.3'
+      MasterUsername: !Ref DBUser
+      MasterUserPassword: !Ref DBPassword
+      DBInstanceIdentifier: replaceWithYourInstanceIdentifier
